@@ -1,0 +1,24 @@
+This was the solution to the final maze of the Karel Bot:
+
+def turn_around():
+    turn_left()
+    turn_left()
+def turn_right():
+    turn_around()
+    turn_left()
+
+while not at_goal():
+    if front_is_clear() and right_is_clear():
+        move()
+	# if you were put a turn_left() here to always have a wall to the right of you, this would not work since we are
+	# inside the loop, and it would not turn right when it has to since this covers 2 scenarios.
+	# If you where to create a second while loop before this with if front is clear
+	# then move and turn left it would work like in angelas version
+    else:
+        if right_is_clear():
+             turn_right()
+             move()
+        elif front_is_clear():
+            move()
+        else:
+            turn_left()
